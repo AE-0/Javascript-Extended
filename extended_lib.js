@@ -69,7 +69,7 @@ Object.prototype.includes = function(s, n) {
   }
   for (let key in this) {
     if (typeof this[key] === 'object') {
-      if ( this[key].has(s, n)) return true;
+      if ( this[key].includes(s, n)) return true;
     }
   }
   return false;
