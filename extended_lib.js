@@ -9,7 +9,7 @@ Array.prototype.min = function() { return Math.min(...this)};
 Array.prototype.max = function() { return Math.max(...this)};
 Array.prototype.minmax = function() { return [Math.min(...this), Math.max(...this)]}; //  inefficient 
 Array.prototype.uniq = function() { return this.filter((e, i, a) => a.indexOf(e) === i)};
-Array.prototype.xor = function () { return this.reduce((e, i) => e ^ i)} // optional lambda implementation
+Array.prototype.xor = function () { return this.reduce((e, i) => e ^ i)}; // optional lambda implementation
 Array.prototype.count = function(arr) { // needs rank polymorphism
   if (typeof(arr) == 'string') arr = arr.split('');
   let result = [];
@@ -17,11 +17,11 @@ Array.prototype.count = function(arr) { // needs rank polymorphism
     result.push(this.map(e => e == arr[i]).reduce((a, b) => a + b));
   }
   return result;
-}
+};
 Array.prototype.mapReduce = function(lambda, optional) { // check if nested array then this.map(e => e.reduce(optional)) also use sum()
   optional ??= (e, i) => e + i;
   return this.map(lambda).reduce(optional)
-}
+};
 Array.prototype.rotate = function(n) { // APL port. needs refactoring
     let r = n % this.length;
     if (r < 0) r += this.length;
@@ -61,7 +61,6 @@ Array.iota = function(start, end, n) { // APL/C++/Haskell port
   arr[0] = start;
   return arr.fill(0, 1).scan(e => e + n);
 };
-;
 Object.prototype.includes = function(s, n) {
   if (this.hasOwnProperty(s)) {
     if (this[s] === n) {
@@ -74,7 +73,7 @@ Object.prototype.includes = function(s, n) {
     }
   }
   return false;
-}
+};
 Function.prototype.flip = function(...args) { // Haskell port C combinator
   return this.apply(this, args.reverse());
 };
