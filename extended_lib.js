@@ -78,3 +78,22 @@ Object.prototype.includes = function(s, n) {
 Function.prototype.flip = function(...args) { // Haskell port C combinator
   return this.apply(this, args.reverse());
 };
+const _plus = (e, i) => e + i;
+const _minus = (e, i) => e - i;
+const _equals = (e, i) => e == i;
+const _strictEquals = (e, i) => e === i;
+const _notEquals = (e, i) => e != i;
+const _strictNotEquals = (e, i) => e !== i;
+const _and = (e, i) => e && i;
+const _or = (e, i) => e || i;
+const _power = (e, i) => e ** i;
+const _multiplies = (e, i) => e * i;
+const _divides = (e, i) => e / i;
+const _modulus = (e, i) => e % i;
+const _max = (e, i) => Math.max(e, i);
+const _min = (e, i) => Math.min(e, i);
+const _absDiff = (e, i) => Math.abs(e - i);
+const _less = (e, i) => e < i;
+const _lessEquals = (e, i) => e <= i;
+const _greater = (e, i) => e > i;
+const _greaterEquals = (e, i) => e >= i;
