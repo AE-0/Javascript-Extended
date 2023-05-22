@@ -10,6 +10,7 @@ Array.prototype.max = function() { return Math.max(...this)};
 Array.prototype.minmax = function() { return [Math.min(...this), Math.max(...this)]}; //  inefficient 
 Array.prototype.uniq = function() { return this.filter((e, i, a) => a.indexOf(e) === i)};
 Array.prototype.xor = function () { return this.reduce((e, i) => e ^ i)}; // optional lambda implementation
+Array.prototype.zip = function(arr) { return this.map((e, i) => [e, arr[i]])};
 Array.prototype.count = function(arr) { // needs rank polymorphism
   if (typeof(arr) == 'string') arr = arr.split('');
   let result = [];
