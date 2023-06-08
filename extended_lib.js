@@ -52,6 +52,16 @@ Array.prototype.zipWith = function(operation, arr) {
   }
   return result;
 };
+Array.prototype.transpose = function() { // APL port ⍉
+  let arr = [];
+  for (let i = 0; i < this[0].length; i++) {
+    arr[i] = [];
+    for (let j = 0; j < this.length; j++) {
+      arr[i][j] = this[j][i];
+    }
+  }
+  return arr;
+};
 Array.iota = function(start, end, n) { // APL/C++/Haskell port
   n ??= 1;
   if (!end) {
