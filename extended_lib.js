@@ -86,7 +86,8 @@ Object.prototype.includes = function(s, n) {
   return false;
 };
 Function.prototype.flip = function(...args) { // Haskell port C combinator
-  return this.apply(this, args.reverse());
+  const fn = this;
+  return args.length > 0 ? fn.apply(this, args.reverse()) : function(...args) { return fn.apply(this, args.reverse()) };
 };
 const _plus = (e, i) => e + i;
 const _minus = (e, i) => e - i;
@@ -102,7 +103,8 @@ const _divides = (e, i) => e / i;
 const _modulus = (e, i) => e % i;
 const _max = (e, i) => Math.max(e, i);
 const _min = (e, i) => Math.min(e, i);
-const _absDiff = (e, i) => Math.abs(e - i);
+const _diff = _minus.flip();
+const _diffAbs = (e, i) => Math.abs(e - i);
 const _less = (e, i) => e < i;
 const _lessEquals = (e, i) => e <= i;
 const _greater = (e, i) => e > i;
