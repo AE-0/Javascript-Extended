@@ -42,13 +42,13 @@ Array.prototype.outerProduct = function(lambda, optional) { // APL port ∘.
   }
   return matrix;
 };
-Array.prototype.zipWith = function(operation, arr) {
+Array.prototype.zipWith = function(lambda, arr) {
   arr ??= this;
   const length = this.length < arr.length ? arr.length : this.length; // smaller? bigger? only if equal length?
   const result = [];
   if (typeof(arr) == 'string') arr = arr.split('');
   for (let i = 0; i < length; i++) {
-    result.push(operation(this[i], arr[i]));
+    result.push(lambda(this[i], arr[i]));
   }
   return result;
 };
