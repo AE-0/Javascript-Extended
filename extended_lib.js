@@ -41,7 +41,7 @@ Array.prototype.count = function(arr) { // needs rank polymorphism
 };
 Array.prototype.mapReduce = function(lambda, optional) { // check if nested array then this.map(e => e.reduce(optional)) also use sum()
   optional ??= (e, i) => e + i;
-  return this.map(lambda).reduce(optional)
+  return this.map(lambda).reduce(optional);
 };
 Array.prototype.rotate = function(n) { // APL port. needs refactoring
     let r = n % this.length;
@@ -58,7 +58,7 @@ Array.prototype.outerProduct = function(lambda, optional) { // APL port ∘.
   const matrix = [];
   for (let i = 0; i < optional.length; i++) {
     let arr = this.map(e => lambda(e, optional[i]));
-    matrix.push(arr)
+    matrix.push(arr);
   }
   return matrix;
 };
@@ -112,5 +112,6 @@ Function.prototype.flip = function(...args) { // Haskell port C combinator
 Function.prototype.not = function(...args) { // Haskell port of not and negate
   const fn = this;
   return args.length > 0 ? fn.apply(this, args.map(e => Array.isArray(e) ? e.map(_not) : _not(e))) : function(...args) {
-    return fn.apply(this, args.map(_not) ) };
+    return fn.apply(this, args.map(_not)) 
+  }
 };
