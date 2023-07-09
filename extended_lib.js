@@ -82,6 +82,19 @@ Array.prototype.transpose = function() { // APL port ⍉
   }
   return arr;
 };
+Array.prototype.windowed = function(size, step) { // Kotlin port
+  if (size <= 0 || step <= 0) {
+    throw new Error("Size and step must be positive");
+  }
+  const result = [];
+  for (let i = 0; i <= this.length - size; i += step) {
+    result.push(this.slice(i, i + size));
+  }
+  return result;
+}; 
+Array.prototype.chunks = function(size) { return this.windowed(size, 1)}; // C++ proposal port
+Array.prototype.slide = function(step) { return this.windowed(1, step)};
+Array.prototype.stride = function(value) { return this.windowed(value, value)};
 Array.iota = function(start, end, n) { // APL/C++/Haskell port
   n ??= 1;
   if (!end) {
